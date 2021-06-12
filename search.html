@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
+    <title>Find A Property</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="jQueryFunctions.js"></script>
+    <link href="stylesheet.css" rel="stylesheet">
+
+    <script src="jquery-ui.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet">
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+
+</head>
+
+
+<body>
+
+
+    <header>
+        <nav>
+            
+            <!--navigation bar-->
+            <ul>
+                <img src="images/logo1.png" alt="logo" class="nav-logo">
+                <li><a href="search.html">Search</a></li>
+                <li><a href="home.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="search-bdy">
+        <div class="top-sec">
+            <h1>Find A Property</h1>
+    
+    <!-- search conditions for properties -->
+            <div class="search-box">
+    
+                <fieldset>
+
+                    <!-- Spinners for room number selection  -->
+                    <legend>No. rooms</legend>
+                    <div class="rooms">
+                        <div>
+    
+                            <label for="minbedroom">Minimum number of bedrooms :</label>
+                            <input id="minbedroom" value="2">
+                        </div>
+                        <div>
+                            <label for="maxbedrooms">Maximum number of bedrooms :</label>
+                            <input id="maxbedroom" value="2">
+                        </div>
+    
+    
+                    </div>
+                </fieldset>
+                
+                <!-- Dropdown menue for propety type selection  -->
+                <div class="type-dropdown">
+                    <label for="type">Property Type :</label>
+                    <select name="propertyType" id="type">
+                        <option value="Flat">Flat</option>
+                        <option value="House">House</option>
+                        <option value="Any" selected>Any</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <!-- dropdown for picking date  -->
+                    <legend>Listing date</legend>
+                    <div class="Date-cls">
+                        <label for="month">Month</label>
+                        <select name="pickmonth" id="month">
+                            <option value="Anymonth" selected>Any Month</option>
+                            <option value="January"> January</option>
+                            <option value="February"> February</option>
+                            <option value="March"> March</option>
+                            <option value="April "> April </option>
+                            <option value="May"> May</option>
+                            <option value="August"> August</option>
+                            <option value="September "> September </option>
+                            <option value="October"> October</option>
+                            <option value="November"> November</option>
+                            <option value="December"> December</option>
+                        </select>
+                
+
+                    <label for="year">Year</label>
+                    <select name="pickyear" id="year">
+                        <option value="Anyyear" selected>Any Year</option>
+                        <option value="2017">2018</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2018</option>
+                    </select>
+                </div>
+                </fieldset>
+    
+                <!-- slider for price range  -->
+                <div class="price-container">
+                    <label for="price">Price Range</label>
+                    <input type="text" id="price" class="priceSliderText" readonly>
+
+                    <div id="price-range"></div>
+    
+                </div>
+            </div>
+            <!-- button for search  -->
+            <button id="Search">Search</button>
+
+            <!-- button for favourite function  -->
+            <button id="showFavs">View Favourites</button>
+            <button id="clear">Clear favourites</button>
+        </div>
+        <div>
+            <!-- div to display favourites  -->
+            <div id="display-favs">
+            </div>
+            
+    
+        </div>
+    
+        <!-- placeholder div to display search results   -->
+        <div id="Placeholder"></div>
+    
+    </div>
+
+
+
+
+    <!-- integrated jason data -->
+    <script>
+        var data = {
+
+            "properties": [{
+                "id": "prop1",
+                "type": "House",
+                "bedrooms": 3,
+                "price": 650000,
+                "tenure": "Freehold",
+                "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+                "location": "Petts Wood Road, Petts Wood, Orpington",
+                "picture": "images/prop1pic1small.jpg",
+                "url": "propety1.html",
+                "added": {
+                    "month": "March",
+                    "day": 12,
+                    "year": 2018
+                }
+            }, {
+                "id": "prop2",
+                "type": "Flat",
+                "bedrooms": 2,
+                "price": 299995,
+                "tenure": "Freehold",
+                "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms. This apartment being only five years old, is still under a 10 year building guarantee...",
+                "location": "Crofton Road, Orpington, BR6",
+                "picture": "images/prop1pic2small.jpg",
+                "url": "propety2.html",
+                "added": {
+                    "month": "September",
+                    "day": 14,
+                    "year": 2018
+                }
+            }, {
+                "id": "prop3",
+                "type": "Flat",
+                "bedrooms": 6,
+                "price": 678000,
+                "tenure": "Freehold",
+                "description": "this flat is a amzing value with high windows . it contais a great dining area with with oposite kitchen equiped with all the appliances",
+                "location": "Prince Regent Street, Newham, E16",
+                "picture": "images/prop3pic1small.jpg",
+                "url": "propety3.html",
+                "added": {
+                    "month": "September",
+                    "day": 20,
+                    "year": 2018
+                }
+            }, {
+                "id": "prop4",
+                "type": "House",
+                "bedrooms": 7,
+                "price": 387000,
+                "tenure": "Freehold",
+                "description": "An exceptional early Victorian house that boasts the space so many strive to achieve in this exclusive location. Located on the southern side of this highly regarded residential street, in the heart of The Boltons Conservation Area. Benefiting from a front and rear garden which connects to the mews house with off street parking for 5 cars, allowing for fantastic security and privacy.....",
+                "location": "Prince Regent Street, Newham, E16",
+                "picture": "images/prop4pic1small.jpg",
+                "url": "propety4.html",
+                "added": {
+                    "month": "May",
+                    "day": 19,
+                    "year": 2019
+                }
+            }, {
+                "id": "prop5",
+                "type": "Flat",
+                "bedrooms": 10,
+                "price": 860100,
+                "tenure": "Freehold",
+                "description": "A stunning 5925 sq ft duplex apartment located within an exclusive and private gated development with concierge service, and underground parking. Arranged over two floors with a grand double height reception room, the property benefits from a beautiful eat in kitchen complete with Gaggenau appliances, second reception room, five bedrooms with en suite bathrooms, massage room, gym and private terrace and a further study and housekeepers quarters with own entrance. The property has state of the art lighting and entertainment system controlled by touch screen pads throughout the property. The development offers a swimming pool and manicured communal gardens......",
+                "location": "Green Lane, Seven Kings, IG6",
+                "picture": "images/prop5pic1small.jpg",
+                "url": "propety5.html",
+                "added": {
+                    "month": "January",
+                    "day": 11,
+                    "year": 2020
+                }
+            }, {
+                "id": "prop6",
+                "type": "House",
+                "bedrooms": 9,
+                "price": 500100,
+                "tenure": "Freehold",
+                "description": "The house has been rebuilt throughout and just a few of the many features include a triple volume reception hall, a lift to all floors, large principal reception rooms and a Ballroom of 2,700 sq. ft./250 sq. m. In addition there is a 12m indoor swimming pool with separate gym, changing facilities with both steam and sauna rooms, massage/hairdressing/spa room. The house is well situated on the west side of The Bishops Avenue on the favoured southerly end of the road and is within 500, of East Finchley underground station and 1100m of Kenwood.......",
+                "location": "Romford Road, Newham",
+                "picture": "images/prop6pic1small.jpg",
+                "url": "propety6.html",
+                "added": {
+                    "month": "June",
+                    "day": 22,
+                    "year": 2019
+                }
+            }, {
+                "id": "prop7",
+                "type": "House",
+                "bedrooms": 5,
+                "price": 237750,
+                "tenure": "Freehold",
+                "description": "A stunning freehold house set in the heart of Mayfair. The property has been meticulously developed by Fenton Whelan, one of London`s premier luxury developers and presents an extremely rare opportunity to purchase a spectacular, freehold asset in one of London`s most exclusive addresses. With an emphasis on meticulous detailing the property boasts a south facing aspect, exceptional ceiling heights on every floor, a large lift, 6 bedrooms, a south-west facing roof terrace, a large integrated garage and separate staff accommodation........",
+                "location": "Stonley Road, Woodford",
+                "picture": "images/prop7pic1small.jpg",
+                "url": "propety7.html",
+                "added": {
+                    "month": "July",
+                    "day": 30,
+                    "year": 2020
+                }
+            }]
+        }
+    </script>
+
+
+</body>
+
+</html>
